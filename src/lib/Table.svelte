@@ -13,6 +13,7 @@
 <style>
 	table {
 		border-collapse: collapse;
+		margin-bottom: 1rem;
 	}
 
 	:global(td),

@@ -1,18 +1,10 @@
 <script lang="ts">
 	import { page, data } from '$lib/state.svelte';
+	import Items from '$lib/Items.svelte';
 
 	page.title = 'Edit';
 
-	const data_copy = $derived((() => [...data.list].reverse())());
-	const dataStr = $derived(
-		JSON.stringify({
-			title: data.title,
-			subtitle: data.subtitle,
-			list: data.list
-		})
-	);
-
-	function onclick() {
+	function addItem() {
 		data.list.push({
 			description: '',
 			unit: '',
@@ -21,50 +13,39 @@
 		});
 	}
 
-	function importDevi() {
-		const data2 = JSON.parse(localStorage.getItem('list') ?? dataStr);
+	function importData() {
+		const data2 = JSON.parse(localStorage.getItem('list') ?? data.str);
 
 		data.title = data2.title;
 		data.subtitle = data2.subtitle;
 		data.list = data2.list;
 	}
+
+	function saveData() {
+		localStorage.setItem('list', data.str);
+		data.reset();
+	}
 </script>
 
 <form>
 	<div class="right">
-		<button onclick={importDevi}>Import</button>
-		<button onclick={() => localStorage.setItem('list', dataStr)}>Save</button>
+		<button onclick={importData}>Import</button>
+		<button onclick={saveData}>Save</button>
 	</div>
-
-	<div>
-		<label for="title">Title</label>
-		<input type="text" id="title" bind:value={data.title} placeholder="Enter title" />
-	</div>
-
-	<div>
-		<label for="subtitle">Subtitle</label>
-		<input type="text" id="subtitle" bind:value={data.subtitle} placeholder="Enter subtitle" />
-	</div>
+	{@render Input('Title', 'title', 'Enter Title', 'title')}
+	{@render Input('Subtitle', 'subtitle', 'Enter Sub Title', 'subtitle')}
 
 	<hr />
-
-	<button {onclick}>&plus;</button>
-
-	{#each data_copy as item, i}
-		<div>
-			<input type="text" bind:value={item.description} placeholder="Description" />
-			<input type="text" bind:value={item.unit} placeholder="Unit" />
-			<input type="number" inputmode="numeric" bind:value={item.quantity} placeholder="quantity" />
-			<input
-				type="number"
-				inputmode="numeric"
-				bind:value={item.unitPrice}
-				placeholder="Unit price"
-			/>
-		</div>
-		<button onclick={() => data.list.splice(data.list.length - (i + 1), 1)}>Delete</button>
-	{/each}
+	<button onclick={addItem}>Add new item</button>
+	<Items></Items>
 </form>
+
+{#snippet Input(label: string, id: string, placeholder: string, value: 'title' | 'subtitle')}
+	<div>
+		<label for={id}>{label}</label>
+		<input type="text" {id} bind:value={data[value]} {placeholder} />
+	</div>
+{/snippet}
 
 <style>
 	form {
@@ -75,11 +56,11 @@
 		margin: auto;
 	}
 
-	button {
+	:global(button) {
 		width: fit-content;
 	}
 
-	div {
+	:global(div) {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;

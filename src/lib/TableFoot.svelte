@@ -12,3 +12,10 @@
 		<th>{total} RWF</th>
 	</tr>
 </tfoot>
+
+<style>
+	th {
+		text-align: right;
+		text-wrap: nowrap;
+	}
+</style>

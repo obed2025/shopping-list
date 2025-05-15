@@ -10,10 +10,23 @@ class Page {
 }
 
 class Data {
-	title = $state('Shopping list');
+	title = $state('');
 	subtitle = $state('');
+	list: ListItem[] = $state([]);
 
-	list: ListItem[] = $state([{ description: 'Rice', unit: 'kg', quantity: 10, unitPrice: 1.5e3 }]);
+	reset() {
+		this.title = '';
+		this.subtitle = '';
+		this.list = [];
+	}
+
+	str = $derived(
+		JSON.stringify({
+			title: this.title,
+			subtitle: this.subtitle,
+			list: this.list
+		})
+	);
 }
 
 export const page = new Page();

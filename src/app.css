@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	padding-inline: 1rem;
+	max-width: 75rem;
+	margin: auto;
+}
+
+h1,
+h2,
+h3 {
+	line-height: 1.1;
+	margin-top: 0;
+}
+
+p {
+	line-height: 1.5;
+}
+
+input,
+button {
+	font-size: inherit;
+	font-family: inherit;
+}
+
+button:focus:not(:focus-visible) {
+	outline: none;
+}

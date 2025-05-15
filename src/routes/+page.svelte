@@ -8,7 +8,11 @@
 <h1>{data.title}</h1>
 <h2>{data.subtitle}</h2>
 
-<Table></Table>
+{#if data.list.length}
+	<Table></Table>
+{:else}
+	<p>Your list is empty, try to add a new item!</p>
+{/if}
 
 <style>
 	@media only print {

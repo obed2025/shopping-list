@@ -16,8 +16,7 @@
 		margin-bottom: 1rem;
 	}
 
-	:global(td),
-	:global(th) {
+	:global(td, th) {
 		padding: 0.5rem 1rem;
 		border: 1px solid black;
 	}
@@ -29,16 +28,14 @@
 			max-width: 100%;
 			overflow-x: auto;
 
-			:global(td),
-			:global(tfoot th) {
+			:global(td, tfoot th) {
 				text-wrap: nowrap;
 				height: 100%;
 				border-left: 0;
 				text-align: right;
 			}
 
-			:global(td),
-			:global(th) {
+			:global(td, th) {
 				&:not(:last-child) {
 					border-bottom: 0;
 				}

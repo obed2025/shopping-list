@@ -6,7 +6,6 @@
 
 	const { children } = $props();
 	let scrollY = $state(0);
-	let innerHeight = $state(0);
 
 	const onclick = () => (scrollY = 0);
 </script>
@@ -15,14 +14,14 @@
 	<title>{page.title}</title>
 </svelte:head>
 
-<svelte:window bind:scrollY bind:innerHeight />
+<svelte:window bind:scrollY />
 
 <Header></Header>
 
 <main>
 	{@render children()}
 
-	{#if scrollY > innerHeight}
+	{#if scrollY >= page.headerHeight}
 		{@render BackToTop()}
 	{/if}
 </main>
@@ -38,7 +37,7 @@
 	button {
 		all: unset;
 		position: fixed;
-		bottom: 1rem;
+		bottom: 0.75rem;
 		right: 1rem;
 		background-color: hsl(0, 0%, 25%);
 		color: white;

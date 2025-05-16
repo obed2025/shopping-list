@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { data } from './state.svelte';
 	import Button from './Button.svelte';
+	import { page } from './state.svelte';
 
 	function importData() {
 		const data2 = JSON.parse(localStorage.getItem('list') ?? data.str);
@@ -16,7 +17,7 @@
 	}
 </script>
 
-<header>
+<header bind:clientHeight={page.headerHeight}>
 	<nav>
 		<ul>
 			<li>

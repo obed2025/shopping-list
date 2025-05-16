@@ -7,6 +7,7 @@ interface ListItem {
 
 class Page {
 	title = $state('');
+	headerHeight = $state(0);
 }
 
 class Data {

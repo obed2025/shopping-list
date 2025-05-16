@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page, data } from '$lib/state.svelte';
 	import Items from '$lib/Items.svelte';
+	import Button from '$lib/Button.svelte';
 
 	page.title = 'Edit';
 
@@ -19,7 +20,7 @@
 	{@render Input('Subtitle', 'subtitle', 'Enter Sub Title', 'subtitle')}
 
 	<hr />
-	<button onclick={addItem}>Add new item</button>
+	<Button onclick={addItem} icon="plus" text="Add new item"></Button>
 	<Items></Items>
 </form>
 

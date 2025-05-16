@@ -5,12 +5,13 @@
 		onclick: EventHandler;
 		text: string;
 		icon: string;
+		isPrimary?: boolean;
 	}
 
-	const { onclick, icon, text }: Props = $props();
+	const { onclick, icon, text, isPrimary }: Props = $props();
 </script>
 
-<button {onclick}> {@render Icon(icon)} {text}</button>
+<button {onclick} class={[{ isPrimary }]}> {@render Icon(icon)} {text}</button>
 
 {#snippet Icon(name: string)}
 	<i class="fa-solid fa-{name}"></i>
@@ -18,7 +19,10 @@
 
 <style>
 	button {
-		background-color: #1616d7db;
+		--color: hsl(0, 0%, 15%);
+		--color-hover: hsla(0, 0%, 20%, 0.7);
+
+		background-color: var(--color);
 		border: none;
 		color: white;
 		font-weight: 600;
@@ -28,7 +32,12 @@
 		transition: background-color 0.35s ease-in-out;
 
 		&:hover {
-			background-color: #2b59e2e3;
+			background-color: var(--color-hover);
+		}
+
+		&.isPrimary {
+			--color: hsl(0, 0%, 12.5%);
+			--color-hover: hsla(0, 0%, 15%, 0.7);
 		}
 	}
 

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { data } from './state.svelte';
+	import Button from './Button.svelte';
 
 	const reversedList = $derived((() => [...data.list].reverse())());
 </script>
@@ -16,7 +17,11 @@
 				bind:value={item.unitPrice}
 				placeholder="Unit price"
 			/>
-			<button onclick={() => data.list.splice(data.list.length - (i + 1), 1)}>Delete</button>
+			<Button
+				onclick={() => data.list.splice(data.list.length - (i + 1), 1)}
+				icon="trash"
+				text="Delete"
+			></Button>
 		</div>
 	{/each}
 </div>

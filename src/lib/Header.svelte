@@ -28,13 +28,13 @@
 		</ul>
 		<ul>
 			<li>
-				<Button onclick={importData} icon="upload" text="Import"></Button>
+				<Button onclick={importData} icon="upload" text="Import" isPrimary></Button>
 			</li>
 			<li>
-				<Button onclick={saveData} icon="save" text="Save"></Button>
+				<Button onclick={saveData} icon="save" text="Save" isPrimary></Button>
 			</li>
 			<li>
-				<Button onclick={() => print()} icon="print" text="Print"></Button>
+				<Button onclick={() => print()} icon="print" text="Print" isPrimary></Button>
 			</li>
 		</ul>
 	</nav>
@@ -88,7 +88,7 @@
 
 	a {
 		text-decoration: none;
-		color: blue;
+		color: hsl(0, 0%, 5%);
 		font-weight: 600;
 		font-size: large;
 	}

@@ -12,26 +12,9 @@
 			unitPrice: 0
 		});
 	}
-
-	function importData() {
-		const data2 = JSON.parse(localStorage.getItem('list') ?? data.str);
-
-		data.title = data2.title;
-		data.subtitle = data2.subtitle;
-		data.list = data2.list;
-	}
-
-	function saveData() {
-		localStorage.setItem('list', data.str);
-		data.reset();
-	}
 </script>
 
 <form>
-	<div class="right">
-		<button onclick={importData}>Import</button>
-		<button onclick={saveData}>Save</button>
-	</div>
 	{@render Input('Title', 'title', 'Enter Title', 'title')}
 	{@render Input('Subtitle', 'subtitle', 'Enter Sub Title', 'subtitle')}
 
@@ -64,11 +47,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-
-		&.right {
-			flex-direction: row;
-			justify-content: flex-end;
-		}
 	}
 
 	hr {

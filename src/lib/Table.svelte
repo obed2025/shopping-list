@@ -14,6 +14,7 @@
 	table {
 		border-collapse: collapse;
 		margin-bottom: 1rem;
+		border: 1px solid transparent;
 	}
 
 	:global(td, th) {

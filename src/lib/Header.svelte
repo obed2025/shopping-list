@@ -1,3 +1,21 @@
+<script lang="ts">
+	import { data } from './state.svelte';
+	import Button from './Button.svelte';
+
+	function importData() {
+		const data2 = JSON.parse(localStorage.getItem('list') ?? data.str);
+
+		data.title = data2.title;
+		data.subtitle = data2.subtitle;
+		data.list = data2.list;
+	}
+
+	function saveData() {
+		localStorage.setItem('list', data.str);
+		data.reset();
+	}
+</script>
+
 <header>
 	<nav>
 		<ul>
@@ -6,6 +24,17 @@
 			</li>
 			<li>
 				<a href="/edit">Edit</a>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<Button onclick={importData} icon="upload" text="Import"></Button>
+			</li>
+			<li>
+				<Button onclick={saveData} icon="save" text="Save"></Button>
+			</li>
+			<li>
+				<Button onclick={() => print()} icon="print" text="Print"></Button>
 			</li>
 		</ul>
 	</nav>
@@ -22,6 +51,18 @@
 	ul {
 		display: flex;
 		gap: 1rem;
+
+		:global(&:has(button)) {
+			flex-wrap: wrap;
+
+			li {
+				flex-grow: 1;
+			}
+
+			:global(button) {
+				width: 100%;
+			}
+		}
 	}
 
 	header {
@@ -35,5 +76,20 @@
 		header {
 			display: none;
 		}
+	}
+
+	nav {
+		display: flex;
+		justify-content: space-between;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	a {
+		text-decoration: none;
+		color: blue;
+		font-weight: 600;
+		font-size: large;
 	}
 </style>

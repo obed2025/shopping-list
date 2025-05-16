@@ -1,8 +1,8 @@
 interface ListItem {
 	description: string;
 	unit: string;
-	quantity: number;
-	unitPrice: number;
+	quantity: number | null;
+	unitPrice: number | null;
 }
 
 class Page {

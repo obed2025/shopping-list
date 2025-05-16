@@ -2,7 +2,9 @@
 	import { data } from './state.svelte';
 
 	let total = $derived(
-		data.list.reduce((prev, curr) => prev + curr.quantity * curr.unitPrice, 0).toLocaleString()
+		data.list
+			.reduce((prev, curr) => prev + (curr.quantity ?? 0) * (curr.unitPrice ?? 0), 0)
+			.toLocaleString()
 	);
 </script>
 

@@ -67,9 +67,6 @@
 
 	header {
 		padding-block: 1rem;
-		position: sticky;
-		top: 0;
-		background-color: white;
 	}
 
 	@media print {
@@ -91,5 +88,9 @@
 		color: hsl(0, 0%, 5%);
 		font-weight: 600;
 		font-size: large;
+
+		&:focus-visible {
+			outline: 2px solid black;
+		}
 	}
 </style>

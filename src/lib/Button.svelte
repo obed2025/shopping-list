@@ -30,8 +30,10 @@
 		border-radius: 0.5rem;
 		cursor: pointer;
 		transition: background-color 0.35s ease-in-out;
+		outline: none;
 
-		&:hover {
+		&:hover,
+		&:focus-visible {
 			background-color: var(--color-hover);
 		}
 

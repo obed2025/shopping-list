@@ -9,8 +9,8 @@
 		data.list.push({
 			description: '',
 			unit: '',
-			quantity: 0,
-			unitPrice: 0
+			quantity: null,
+			unitPrice: null
 		});
 	}
 </script>
@@ -59,5 +59,19 @@
 
 	form {
 		margin-bottom: 1rem;
+	}
+
+	label {
+		font-weight: 500;
+	}
+
+	:global(input) {
+		padding: 0.25rem 0.5rem;
+		border: none;
+		outline: 2px solid hsl(0, 0%, 50%);
+
+		&:focus {
+			outline-color: hsl(0, 0%, 20%);
+		}
 	}
 </style>

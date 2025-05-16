@@ -5,10 +5,16 @@
 *::before,
 *::after {
 	box-sizing: border-box;
+
+	::selection {
+		background-color: hsl(0, 0%, 25%);
+		color: white;
+	}
 }
 
 html {
 	font-family: 'Open Sans Variable', sans-serif;
+	scroll-behavior: smooth;
 }
 
 body {
@@ -32,10 +38,6 @@ input,
 button {
 	font-size: inherit;
 	font-family: inherit;
-}
-
-button:focus:not(:focus-visible) {
-	outline: none;
 }
 
 @media only print {

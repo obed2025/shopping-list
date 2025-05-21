@@ -3,6 +3,8 @@
 	import { page } from '$lib/state.svelte';
 	import { fade } from 'svelte/transition';
 	import '../app.css';
+	import '@fontsource-variable/open-sans'; /* Supports weights 300-800 */
+	import '@fortawesome/fontawesome-free/css/all.css';
 
 	const { children } = $props();
 	let scrollY = $state(0);

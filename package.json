@@ -33,6 +33,7 @@
 		"vite": "^6.2.6"
 	},
 	"dependencies": {
-		"@fontsource-variable/open-sans": "^5.2.5"
+		"@fontsource-variable/open-sans": "^5.2.5",
+		"@fortawesome/fontawesome-free": "^6.7.2"
 	}
 }

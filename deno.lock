@@ -4,6 +4,7 @@
     "npm:@eslint/compat@^1.2.5": "1.2.9_eslint@9.27.0",
     "npm:@eslint/js@^9.18.0": "9.27.0",
     "npm:@fontsource-variable/open-sans@^5.2.5": "5.2.5",
+    "npm:@fortawesome/fontawesome-free@^6.7.2": "6.7.2",
     "npm:@neoconfetti/svelte@2": "2.2.2_svelte@5.31.1__acorn@8.14.1",
     "npm:@sveltejs/adapter-auto@6": "6.0.1_@sveltejs+kit@2.21.1__@sveltejs+vite-plugin-svelte@5.0.3___svelte@5.31.1____acorn@8.14.1___vite@6.3.5____picomatch@4.0.2__svelte@5.31.1___acorn@8.14.1__vite@6.3.5___picomatch@4.0.2__acorn@8.14.1_@sveltejs+vite-plugin-svelte@5.0.3__svelte@5.31.1___acorn@8.14.1__vite@6.3.5___picomatch@4.0.2_svelte@5.31.1__acorn@8.14.1_vite@6.3.5__picomatch@4.0.2",
     "npm:@sveltejs/kit@^2.16.0": "2.21.1_@sveltejs+vite-plugin-svelte@5.0.3__svelte@5.31.1___acorn@8.14.1__vite@6.3.5___picomatch@4.0.2_svelte@5.31.1__acorn@8.14.1_vite@6.3.5__picomatch@4.0.2_acorn@8.14.1",
@@ -218,6 +219,9 @@
     },
     "@fontsource-variable/open-sans@5.2.5": {
       "integrity": "sha512-++xRfkZAxNP4e1Spm5W11iVcoYfXcNVTV5MDit60t7grRk10hy9C7XQd/jv+0TDFIfHbK9EzyBp3M3CHPesroA=="
+    },
+    "@fortawesome/fontawesome-free@6.7.2": {
+      "integrity": "sha512-JUOtgFW6k9u4Y+xeIaEiLr3+cjoUPiAuLXoyKOJSia6Duzb7pq+A76P9ZdPDoAoxHdHzq6gE9/jKBGXlZT8FbA=="
     },
     "@humanfs/core@0.19.1": {
       "integrity": "sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA=="
@@ -1362,6 +1366,7 @@
         "npm:@eslint/compat@^1.2.5",
         "npm:@eslint/js@^9.18.0",
         "npm:@fontsource-variable/open-sans@^5.2.5",
+        "npm:@fortawesome/fontawesome-free@^6.7.2",
         "npm:@neoconfetti/svelte@2",
         "npm:@sveltejs/adapter-auto@6",
         "npm:@sveltejs/kit@^2.16.0",

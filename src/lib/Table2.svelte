@@ -14,7 +14,7 @@
 			<tr>
 				<td>{i + 1}</td>
 				<td>{item.name}</td>
-				<td>{item.amount ?? 0} RWF</td>
+				<td>{item.amount?.toLocaleString() ?? 0} RWF</td>
 			</tr>
 		{/each}
 		<tr>

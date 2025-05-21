@@ -9,6 +9,7 @@
 		data.title = data2.title;
 		data.subtitle = data2.subtitle;
 		data.list = data2.list;
+		data.additionalExpenses = data2.additionalExpenses;
 	}
 
 	function saveData() {

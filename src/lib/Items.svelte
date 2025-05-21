@@ -10,7 +10,7 @@
 		<div>
 			<input type="text" bind:value={item.description} placeholder="Description" />
 			<input type="text" bind:value={item.unit} placeholder="Unit" />
-			<input type="number" inputmode="numeric" bind:value={item.quantity} placeholder="quantity" />
+			<input type="number" inputmode="numeric" bind:value={item.quantity} placeholder="Quantity" />
 			<input
 				type="number"
 				inputmode="numeric"

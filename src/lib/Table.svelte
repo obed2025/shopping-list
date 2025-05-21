@@ -2,6 +2,17 @@
 	import TableHead from './TableHead.svelte';
 	import TableBody from './TableBody.svelte';
 	import TableFoot from './TableFoot.svelte';
+	import Table2 from './Table2.svelte';
+
+	import { data } from './state.svelte';
+
+	let subtotal = $derived(
+		data.list.reduce((prev, curr) => prev + (curr.quantity ?? 0) * (curr.unitPrice ?? 0), 0)
+	);
+
+	let total = $derived(
+		subtotal + data.additionalExpenses.reduce((prev, curr) => prev + (curr.amount ?? 0), 0)
+	);
 </script>
 
 <table>
@@ -10,8 +21,13 @@
 	<TableFoot></TableFoot>
 </table>
 
+{#if data.additionalExpenses.length}
+	<Table2></Table2>
+	<h1>TOTAL: {total.toLocaleString()} RWF</h1>
+{/if}
+
 <style>
-	table {
+	:global(table) {
 		border-collapse: collapse;
 		margin-bottom: 1rem;
 		border: 1px solid transparent;
@@ -47,5 +63,9 @@
 				flex-direction: column;
 			}
 		}
+	}
+
+	h1 {
+		padding-block: 1rem;
 	}
 </style>

@@ -1,0 +1,47 @@
+@import '@fontsource-variable/open-sans'; /* Supports weights 300-800 */
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+
+	::selection {
+		background-color: hsl(0, 0%, 25%);
+		color: white;
+	}
+}
+
+html {
+	font-family: 'Open Sans Variable', sans-serif;
+	scroll-behavior: smooth;
+}
+
+body {
+	padding-inline: 1rem;
+	max-width: 75rem;
+	margin: auto;
+}
+
+h1,
+h2,
+h3 {
+	line-height: 1.1;
+	margin-top: 0;
+}
+
+p {
+	line-height: 1.5;
+}
+
+input,
+button {
+	font-size: inherit;
+	font-family: inherit;
+}
+
+@media only print {
+	body {
+		padding: 40px 50px;
+	}
+}

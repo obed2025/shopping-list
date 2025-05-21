@@ -15,7 +15,7 @@ html {
 }
 
 body {
-	padding-inline: 1rem;
+	padding-inline: 2rem;
 	max-width: 75rem;
 	margin: auto;
 }
@@ -40,5 +40,17 @@ button {
 @media only print {
 	body {
 		padding: 40px 50px;
+	}
+}
+
+@media only screen and (width <= 30rem) {
+	body {
+		padding-inline: 1.5rem;
+	}
+}
+
+@media only screen and (width <= 23.75rem) {
+	body {
+		padding-inline: 1rem;
 	}
 }

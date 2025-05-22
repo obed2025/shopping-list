@@ -7,7 +7,7 @@
 	import { page as myPage } from '$app/state';
 	import { set } from 'idb-keyval';
 	import type { List } from '$lib/types';
-	import { get } from 'idb-keyval';
+	import type { PageProps } from '../$types';
 
 	page.print = false;
 	let selectedOption: 'items' | 'additional-expenses' = $state('items');
@@ -37,14 +37,13 @@
 		});
 	}
 
-	(async () => {
-		const dataFromDb = await get<List>(+myPage.params.id);
+	const { data: dataFromDb }: PageProps = $props();
+	const { list } = dataFromDb;
 
-		data.additionalExpenses = dataFromDb?.additionalExpenses ?? [];
-		data.items = dataFromDb?.items ?? [];
-		data.subtitle = dataFromDb?.subtitle ?? '';
-		data.title = dataFromDb?.title ?? '';
-	})();
+	data.additionalExpenses = list?.additionalExpenses ?? [];
+	data.items = list?.items ?? [];
+	data.subtitle = list?.subtitle ?? '';
+	data.title = list?.title ?? '';
 </script>
 
 <Button

@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { data } from './state.svelte';
+	import type { List } from './types';
+
+	const { data }: { data: List } = $props();
 </script>
 
 <tbody>
-	{#each data.list as item, i}
+	{#each data.items as item, i}
 		<tr>
 			<td>{i + 1}</td>
 			<td>{item.description}</td>

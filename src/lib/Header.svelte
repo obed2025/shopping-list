@@ -1,42 +1,22 @@
 <script lang="ts">
-	import { data } from './state.svelte';
 	import Button from './Button.svelte';
 	import { page } from './state.svelte';
-
-	function importData() {
-		const data2 = JSON.parse(localStorage.getItem('list') ?? data.str);
-
-		data.title = data2.title;
-		data.subtitle = data2.subtitle;
-		data.list = data2.list;
-		data.additionalExpenses = data2.additionalExpenses;
-	}
-
-	function saveData() {
-		localStorage.setItem('list', data.str);
-		data.reset();
-	}
 </script>
 
 <header bind:clientHeight={page.headerHeight}>
 	<nav>
 		<ul>
 			<li>
-				<a href="/">Home</a>
+				<a href="/"><i class="fa-solid fa-house"></i> Home</a>
 			</li>
 			<li>
-				<a href="/edit">Edit</a>
+				<a href="/new"><i class="fa-solid fa-plus"></i> New List</a>
 			</li>
 		</ul>
 		<ul>
 			<li>
-				<Button onclick={importData} icon="upload" text="Import" isPrimary></Button>
-			</li>
-			<li>
-				<Button onclick={saveData} icon="save" text="Save" isPrimary></Button>
-			</li>
-			<li>
-				<Button onclick={() => print()} icon="print" text="Print" isPrimary></Button>
+				<Button onclick={() => print()} icon="print" text="Print" isPrimary hide={!page.print}
+				></Button>
 			</li>
 		</ul>
 	</nav>

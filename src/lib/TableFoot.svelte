@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { data } from './state.svelte';
+	import type { List } from './types';
 
+	const { data }: { data: List } = $props();
 	let subtotal = $derived(
-		data.list
+		data.items
 			.reduce((prev, curr) => prev + (curr.quantity ?? 0) * (curr.unitPrice ?? 0), 0)
 			.toLocaleString()
 	);

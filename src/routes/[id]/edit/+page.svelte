@@ -1,13 +1,28 @@
 <script lang="ts">
-	import { page, data } from '$lib/state.svelte';
+	import { page } from '$lib/state.svelte';
 	import Items from '$lib/Items.svelte';
 	import Button from '$lib/Button.svelte';
 	import AdditionalExpenses from '$lib/AdditionalExpenses.svelte';
+	import { goto } from '$app/navigation';
+	import { page as myPage } from '$app/state';
+	import { set } from 'idb-keyval';
+	import type { List } from '$lib/types';
+	import { get } from 'idb-keyval';
+
+	page.print = false;
+	let selectedOption: 'items' | 'additional-expenses' = $state('items');
+
+	let data: List = $state({
+		items: [],
+		additionalExpenses: [],
+		title: '',
+		subtitle: ''
+	});
 
 	page.title = 'Edit';
 
 	function addItem() {
-		data.list.push({
+		data.items.push({
 			description: '',
 			unit: '',
 			quantity: null,
@@ -21,7 +36,30 @@
 			amount: null
 		});
 	}
+
+	(async () => {
+		const dataFromDb = await get<List>(+myPage.params.id);
+
+		data.additionalExpenses = dataFromDb?.additionalExpenses ?? [];
+		data.items = dataFromDb?.items ?? [];
+		data.subtitle = dataFromDb?.subtitle ?? '';
+		data.title = dataFromDb?.title ?? '';
+	})();
 </script>
+
+<Button
+	icon="save"
+	onclick={() => {
+		set(+myPage.params.id, {
+			title: data.title,
+			subtitle: data.subtitle,
+			items: JSON.parse(JSON.stringify(data.items)),
+			additionalExpenses: JSON.parse(JSON.stringify(data.additionalExpenses))
+		});
+		goto(`/${+myPage.params.id}`);
+	}}
+	text="Save"
+></Button>
 
 <form onsubmit={(e) => e.preventDefault()}>
 	{@render Input('Title', 'title', 'Enter Title', 'title')}
@@ -29,13 +67,7 @@
 
 	<fieldset>
 		<label for="items">
-			<input
-				type="radio"
-				name="category"
-				id="items"
-				value="items"
-				bind:group={page.selectedOption}
-			/>
+			<input type="radio" name="category" id="items" value="items" bind:group={selectedOption} />
 			Items
 		</label>
 		<label for="additional-expenses">
@@ -44,7 +76,7 @@
 				name="category"
 				id="additional-expenses"
 				value="additional-expenses"
-				bind:group={page.selectedOption}
+				bind:group={selectedOption}
 			/>
 			Additional Expenses
 		</label>
@@ -52,14 +84,14 @@
 
 	<hr />
 
-	{#if page.selectedOption === 'items'}
+	{#if selectedOption === 'items'}
 		<Button onclick={addItem} icon="plus" text="Add new item"></Button>
-		<Items></Items>
+		<Items {data}></Items>
 	{/if}
 
-	{#if page.selectedOption === 'additional-expenses'}
+	{#if selectedOption === 'additional-expenses'}
 		<Button onclick={addExpenses} icon="plus" text="Add new expenses"></Button>
-		<AdditionalExpenses></AdditionalExpenses>
+		<AdditionalExpenses {data}></AdditionalExpenses>
 	{/if}
 </form>
 
@@ -125,5 +157,9 @@
 		gap: 1rem;
 		justify-content: space-between;
 		flex-wrap: wrap;
+	}
+
+	div:nth-child(1) {
+		margin-top: 1.5rem;
 	}
 </style>

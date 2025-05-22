@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { data } from './state.svelte';
+	import type { List } from './types';
 	import Button from './Button.svelte';
 
-	const reversedList = $derived((() => [...data.list].reverse())());
+	const { data }: { data: List } = $props();
+	const reversedList = $derived((() => [...data.items].reverse())());
 </script>
 
 <div class="container">
@@ -18,7 +19,7 @@
 				placeholder="Unit price"
 			/>
 			<Button
-				onclick={() => data.list.splice(data.list.length - (i + 1), 1)}
+				onclick={() => data.items.splice(data.items.length - (i + 1), 1)}
 				icon="trash"
 				text="Delete"
 			></Button>

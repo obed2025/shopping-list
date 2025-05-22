@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { data } from './state.svelte';
+	import type { List } from './types';
 	import Button from './Button.svelte';
 
+	const { data }: { data: List } = $props();
 	const reversedExpenses = $derived((() => [...data.additionalExpenses].reverse())());
 </script>
 

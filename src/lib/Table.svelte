@@ -3,11 +3,12 @@
 	import TableBody from './TableBody.svelte';
 	import TableFoot from './TableFoot.svelte';
 	import Table2 from './Table2.svelte';
+	import type { List } from './types';
 
-	import { data } from './state.svelte';
+	const { data }: { data: List } = $props();
 
 	let subtotal = $derived(
-		data.list.reduce((prev, curr) => prev + (curr.quantity ?? 0) * (curr.unitPrice ?? 0), 0)
+		data.items.reduce((prev, curr) => prev + (curr.quantity ?? 0) * (curr.unitPrice ?? 0), 0)
 	);
 
 	let total = $derived(
@@ -17,19 +18,19 @@
 
 <table>
 	<TableHead></TableHead>
-	<TableBody></TableBody>
-	<TableFoot></TableFoot>
+	<TableBody {data}></TableBody>
+	<TableFoot {data}></TableFoot>
 </table>
 
 {#if data.additionalExpenses.length}
-	<Table2></Table2>
+	<Table2 {data}></Table2>
 	<h1>TOTAL: {total.toLocaleString()} RWF</h1>
 {/if}
 
 <style>
 	:global(table) {
 		border-collapse: collapse;
-		margin-bottom: 1rem;
+		margin-block: 1.5rem;
 		border: 1px solid transparent;
 	}
 
@@ -67,5 +68,6 @@
 
 	h1 {
 		padding-block: 1rem;
+		margin-bottom: 3.5rem;
 	}
 </style>

@@ -6,12 +6,13 @@
 		text: string;
 		icon: string;
 		isPrimary?: boolean;
+		hide?: boolean;
 	}
 
-	const { onclick, icon, text, isPrimary }: Props = $props();
+	const { onclick, icon, text, isPrimary, hide }: Props = $props();
 </script>
 
-<button {onclick} class={[{ isPrimary }]}> {@render Icon(icon)} {text}</button>
+<button {onclick} class={[{ isPrimary, hide }]}> {@render Icon(icon)} {text}</button>
 
 {#snippet Icon(name: string)}
 	<i class="fa-solid fa-{name}"></i>
@@ -40,6 +41,10 @@
 		&.isPrimary {
 			--color: hsl(0, 0%, 12.5%);
 			--color-hover: hsla(0, 0%, 15%, 0.7);
+		}
+
+		&.hide {
+			visibility: hidden;
 		}
 	}
 

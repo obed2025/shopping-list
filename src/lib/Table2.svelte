@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { data } from './state.svelte';
+	import type { List } from './types';
 
+	const { data }: { data: List } = $props();
 	let total = $derived(
 		data.additionalExpenses.reduce((prev, curr) => prev + (curr.amount ?? 0), 0)
 	);

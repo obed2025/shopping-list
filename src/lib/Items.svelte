@@ -11,12 +11,19 @@
 		<div>
 			<input type="text" bind:value={item.description} placeholder="Description" />
 			<input type="text" bind:value={item.unit} placeholder="Unit" />
-			<input type="number" inputmode="numeric" bind:value={item.quantity} placeholder="Quantity" />
+			<input
+				type="number"
+				inputmode="numeric"
+				bind:value={item.quantity}
+				step="any"
+				placeholder="Quantity"
+			/>
 			<input
 				type="number"
 				inputmode="numeric"
 				bind:value={item.unitPrice}
 				placeholder="Unit price"
+				step="any"
 			/>
 			<Button
 				onclick={() => data.items.splice(data.items.length - (i + 1), 1)}

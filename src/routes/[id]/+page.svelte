@@ -25,7 +25,7 @@
 	<Button
 		icon="trash"
 		onclick={() => {
-if (confirm("Do you really want to delete this list. This action is irreversible!)) {
+if (confirm("Do you really want to delete this list. This action is irreversible!")) {
 			del(+id);
 			goto('/');
 }

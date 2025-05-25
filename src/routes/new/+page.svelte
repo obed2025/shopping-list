@@ -23,16 +23,22 @@
 </script>
 
 <form {onsubmit}>
-	{@render Input('Title', 'title', 'Enter Title', 'title')}
+	{@render Input('Title', 'title', 'Enter Title', 'title', true)}
 	{@render Input('Subtitle', 'subtitle', 'Enter Sub Title', 'subtitle')}
 
 	<Button text="Create" icon="plus" onclick={() => undefined}></Button>
 </form>
 
-{#snippet Input(label: string, id: string, placeholder: string, value: 'title' | 'subtitle')}
+{#snippet Input(
+	label: string,
+	id: string,
+	placeholder: string,
+	value: 'title' | 'subtitle',
+	required?: boolean
+)}
 	<div>
 		<label for={id}>{label}</label>
-		<input type="text" {id} bind:value={data[value]} {placeholder} required />
+		<input type="text" {id} bind:value={data[value]} {placeholder} {required} />
 	</div>
 {/snippet}
 

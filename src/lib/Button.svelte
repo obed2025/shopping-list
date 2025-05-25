@@ -12,7 +12,9 @@
 	const { onclick, icon, text, isPrimary, hide }: Props = $props();
 </script>
 
-<button {onclick} class={[{ isPrimary, hide }]}> {@render Icon(icon)} {text}</button>
+<button {onclick} class={[{ isPrimary, hide, danger: icon === 'trash' }]}>
+	{@render Icon(icon)} {text}</button
+>
 
 {#snippet Icon(name: string)}
 	<i class="fa-solid fa-{name}"></i>
@@ -45,6 +47,11 @@
 
 		&.hide {
 			visibility: hidden;
+		}
+
+		&.danger {
+			--color: hsl(0, 78%, 35%);
+			--color-hover: hsla(0, 78%, 35%, 0.719);
 		}
 	}
 

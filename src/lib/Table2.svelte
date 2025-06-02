@@ -7,7 +7,7 @@
 	);
 </script>
 
-<h3>Additional Expenses</h3>
+<h3 contenteditable>Additional Expenses</h3>
 
 <table>
 	<tbody>
